@@ -25,7 +25,8 @@ contract GenesisScheme {
                             int128[] _reputationAmount,
                             SimpleVoteInterface _simpleVote ) {
 
-        GenesisGlobalConstraint globalContraints = new GenesisGlobalConstraint();
+        NonSelfUnregistration nonSelfUnregistration = new NonSelfUnregistration();
+        GenesisGlobalConstraint globalContraints = new GenesisGlobalConstraint(nonSelfUnregistration);
         controller = new Controller( tokenName, tokenSymbol, this, globalContraints );
         globalContraints.setController(controller);
         simpleVote = _simpleVote;
